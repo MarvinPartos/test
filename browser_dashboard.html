@@ -23,7 +23,6 @@ All CSS and JavaScript are embedded in this single file.
 <head>
 <meta charset="UTF-8">
 
-<!-- THIS FIXES YOUR PHONE WIDTH -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Browser Environment Dashboard</title>
@@ -32,20 +31,14 @@ All CSS and JavaScript are embedded in this single file.
     body {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 40px;
+        padding: 20px;
         transition: background-color 0.4s ease;
     }
 
-    .profile-box {
-        background-color: #d9d9d9;
-        padding: 20px;
-        border-radius: 6px;
-        margin-bottom: 30px;
-    }
-
+    .profile-box,
     .section-box {
         background-color: #f2f2f2;
-        padding: 20px;
+        padding: 15px;
         border-radius: 6px;
         margin-bottom: 20px;
     }
@@ -58,6 +51,18 @@ All CSS and JavaScript are embedded in this single file.
         padding: 6px 10px;
         margin: 5px 5px 5px 0;
         cursor: pointer;
+    }
+
+    /* Make it visually responsive */
+    @media (min-width: 768px) {
+        body {
+            padding: 40px;
+        }
+
+        .profile-box,
+        .section-box {
+            padding: 20px;
+        }
     }
 </style>
 </head>
@@ -144,18 +149,17 @@ function goForward() {
     history.forward();
 }
 
-/* ORIGINAL INSTRUCTOR RULES */
 function updateBackground() {
     let width = window.innerWidth;
 
     if (width < 600) {
-        document.body.style.backgroundColor = "blue";   // Mobile
+        document.body.style.backgroundColor = "blue";
     } 
     else if (width >= 600 && width <= 991) {
-        document.body.style.backgroundColor = "green";  // Tablet
+        document.body.style.backgroundColor = "green";
     } 
     else {
-        document.body.style.backgroundColor = "orange"; // Desktop
+        document.body.style.backgroundColor = "orange";
     }
 }
 
