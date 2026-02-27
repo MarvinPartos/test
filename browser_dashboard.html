@@ -1,13 +1,8 @@
 <!--
 README:
 Browser Environment Dashboard
-This activity demonstrates the use of JavaScript Browser Objects:
-- navigator
-- screen
-- document
-- location
-- history
-- window
+This project demonstrates the use of JavaScript Browser Objects:
+navigator, screen, document, location, history, and window.
 
 Features:
 • Displays browser and screen information
@@ -15,7 +10,6 @@ Features:
 • Allows dynamic title change
 • Navigation controls (reload, redirect, back, forward)
 • Dynamic background color based on screen width
-All CSS and JavaScript are embedded in this single file.
 -->
 
 <!DOCTYPE html>
@@ -161,14 +155,15 @@ function goForward() {
 function updateBackground() {
     let width = window.innerWidth;
 
-    if (width < 600) {
-        document.body.style.backgroundColor = "blue";
+    // Updated breakpoints
+    if (width < 768) {
+        document.body.style.backgroundColor = "blue";   // Mobile
     } 
-    else if (width >= 600 && width <= 991) {
-        document.body.style.backgroundColor = "green";
+    else if (width >= 768 && width < 992) {
+        document.body.style.backgroundColor = "green";  // Tablet
     } 
     else {
-        document.body.style.backgroundColor = "orange";
+        document.body.style.backgroundColor = "orange"; // Desktop
     }
 }
 
