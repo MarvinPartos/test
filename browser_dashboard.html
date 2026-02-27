@@ -1,15 +1,21 @@
 <!--
 README:
 Browser Environment Dashboard
-This project demonstrates the use of JavaScript Browser Objects:
-navigator, screen, document, location, history, and window.
+This activity demonstrates the use of JavaScript Browser Objects:
+- navigator
+- screen
+- document
+- location
+- history
+- window
 
 Features:
 • Displays browser and screen information
 • Shows current page details
 • Allows dynamic title change
 • Navigation controls (reload, redirect, back, forward)
-• Dynamic background color based on screen width
+• Dynamic background color based on screen width and device detection
+All CSS and JavaScript are embedded in this single file.
 -->
 
 <!DOCTYPE html>
@@ -55,7 +61,6 @@ Features:
 
 <body>
 
-<!-- ================= PROFILE SECTION ================= -->
 <div class="profile-box">
     <h1>Student Profile</h1>
 
@@ -69,13 +74,11 @@ Features:
     <p><strong>Instructor:</strong> Arjay F. Abio</p>
 </div>
 
-<!-- ================= PART A ================= -->
 <div class="section-box">
     <h2>Browser Information</h2>
     <p id="browserInfo"></p>
 </div>
 
-<!-- ================= PART B ================= -->
 <div class="section-box">
     <h2>Page Information & Controls</h2>
 
@@ -86,7 +89,6 @@ Features:
     <button onclick="changeTitle()">Change Page Title</button>
 </div>
 
-<!-- ================= PART C ================= -->
 <div class="section-box">
     <h2>Navigation Controls</h2>
 
@@ -97,9 +99,6 @@ Features:
 </div>
 
 <script>
-/* =============================
-   PART A: BROWSER INFORMATION
-============================= */
 function displayBrowserInfo() {
     let info = `
         Browser Name & Version: ${navigator.appName} ${navigator.appVersion} <br>
@@ -109,13 +108,9 @@ function displayBrowserInfo() {
         Available Screen Size: ${screen.availWidth} x ${screen.availHeight} <br>
         Color Depth: ${screen.colorDepth} bits
     `;
-
     document.getElementById("browserInfo").innerHTML = info;
 }
 
-/* =============================
-   PART B: PAGE INFORMATION
-============================= */
 function displayPageInfo() {
     document.getElementById("currentURL").textContent = location.href;
     document.getElementById("hostname").textContent = location.hostname;
@@ -130,9 +125,6 @@ function changeTitle() {
     }
 }
 
-/* =============================
-   PART C: NAVIGATION CONTROLS
-============================= */
 function reloadPage() {
     location.reload();
 }
@@ -149,15 +141,13 @@ function goForward() {
     history.forward();
 }
 
-/* =============================
-   PART D: DYNAMIC BACKGROUND
-============================= */
+/* UPDATED BACKGROUND DETECTION */
 function updateBackground() {
     let width = window.innerWidth;
+    let isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
-    // Updated breakpoints
-    if (width < 768) {
-        document.body.style.backgroundColor = "blue";   // Mobile
+    if (isMobile) {
+        document.body.style.backgroundColor = "blue";   // Always blue on phones
     } 
     else if (width >= 768 && width < 992) {
         document.body.style.backgroundColor = "green";  // Tablet
@@ -167,9 +157,6 @@ function updateBackground() {
     }
 }
 
-/* =============================
-   INITIAL LOAD
-============================= */
 window.onload = function() {
     displayBrowserInfo();
     displayPageInfo();
@@ -177,7 +164,6 @@ window.onload = function() {
 };
 
 window.onresize = updateBackground;
-
 </script>
 
 </body>
